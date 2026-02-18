@@ -2,5 +2,5 @@
 # найти среднее арифметическое с точность 3 знака после запятой
 
 num1, num2, num3 = int(input('Ввидете первое число: ')), int(input('Ввидете второе число: ')), int(input('Ввидете третье число: '))
-result = (num1 + num2 + num3) // 3
+result = (bool(num1) + bool(num2) + bool(num3) / 3)
 print(round(result, 3))
