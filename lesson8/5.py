@@ -1,19 +1,30 @@
 '''
-
-Дан списк:
-['qwertyu','asdfggh','zxcvbnm','yuiop[]','hjklasd','mnbvnbv']
-Для каждого элемента в списке 
-    - вывести на экран сначала номер элемента 
-    - сам элемент 
-    - символ данного элемента, соответствующий номеру его позиции в списке. 
-Образец:
-1 - qwertyu - q
-2 - asdfggh - s
-3 - zxcvbnm - c
-и так далее...
-
+Написать функцию count_char, которая принимает строковое значение,
+из которого создает и возвращает словарь, следующего вида:
+{'буква': 'количество-вхождений-в-строку'}
+Нельзя пользоваться collections.Counter!
 
 '''
-list_task = ['qwertyu','asdfggh','zxcvbnm','yuiop[]','hjklasd','mnbvnbv']
-for i in range(len(list_task)):
-    print(f'{i + 1} - {list_task[i]} - {list_task[i][i]}')
+
+def count_char(s):
+    dict_w = {}
+    for i in s:
+        count = 0
+        if i == ' ':
+            continue
+
+        for j in range(len(s)):
+            if s[j] == i:
+                count += 1
+
+        dict_w[i] = count
+
+    return dict_w
+
+try:
+    s = input('Напишите строку: ').strip()
+    assert s != '', 'Ошибка: введите непустую строку!'
+except AssertionError as e:
+    print(e)
+print(count_char(s))
+

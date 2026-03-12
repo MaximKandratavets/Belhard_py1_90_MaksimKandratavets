@@ -1,23 +1,33 @@
 """
-1. Запросить у пользователей имя и отзыв о магазине. 
-Программа должна запрашивать данные пока не введено слово "stop". 
-Все данные сложить в словарь.
-    -распечатать количество отзывов
-    -распечатать отдельно имена пользователей
-    -распечатать отдельно отзывы
+Напишите функцию yes_or_no, которая принимает список из целых чисел,
+а возвращает список из Yes или No для каждого элемента, 
+Yes - если число уже встречалось и No, если нет
+[1,2,3,1,4] => [no, no, no, yes, no]
+
+если в списке не все целые числа вернуть False.
 
 """
-flag = None
-dict_u = {}
-while flag != False:
-    uss_feed = {
-        input('Введите имя Пользователя: '): input('Введите отзыв: ')
-    }
-    dict_u.update(uss_feed)
-    flag = input('Если все пользователи ввели отзыв напишите "Да"' \
-    ' или нажмите enter для продолженя ')
-    if flag.capitalize() == 'Да':
-        flag = False
-print(len(dict_u))
-print(*dict_u.keys(), sep=', ')
-print(*dict_u.values(), sep=', ')
+
+def yes_or_no(s):
+
+    list_n = []
+    list_clone = []
+
+    for i in s:
+        try:
+            if int(i):
+                if i not in list_clone:
+                    list_n.append('no')
+                    list_clone.append(i)
+                    continue
+
+                list_n.append('yes')
+        except  ValueError:
+            list_n.append(False)
+    return list_n
+
+s = input()
+
+print(yes_or_no(s))
+        
+
