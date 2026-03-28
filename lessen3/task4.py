@@ -1,0 +1,5 @@
+num = int(input())
+print(f'Тысяч - {num // 1000}')
+print(f'Сотен - {(num // 100) % 10}')
+print(f'Десятки - {(num // 10) % 10}')
+print(f'Единицы - {num % 10}')
